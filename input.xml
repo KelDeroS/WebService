@@ -1,0 +1,9 @@
+<ArithmeticExpression>
+    <Expression>
+        x = a + b + 10
+    </Expression>
+    <Parameters>
+        <a>3</a>
+        <b>6</b>
+    </Parameters>
+</ArithmeticExpression>
