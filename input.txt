@@ -1,0 +1,6 @@
+expressions:
+    a + b + 10
+    a + 7
+parameters:
+    a = 3
+    b = 6
