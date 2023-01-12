@@ -1,7 +1,8 @@
 <ArithmeticExpression>
-    <Expression>
-        x = a + b + 10
-    </Expression>
+    <Expressions>
+        <Expression>a + b + 10</Expression>
+        <Expression>a + 7</Expression>
+    </Expressions>
     <Parameters>
         <a>3</a>
         <b>6</b>

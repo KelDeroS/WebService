@@ -3,16 +3,16 @@ package main.java.com.kelderos;
 import java.util.ArrayList;
 
 public class ArithmeticExpression {
-    String expression;
+    ArrayList<String> expressions;
     ArrayList<Parameter> parameters;
 
-    public String getExpression() {
-        return expression;
+    public ArrayList<String> getExpressions() {
+        return expressions;
     }
 
-    public void setExpression(String expression)
+    public void setExpressions(ArrayList<String> expression)
     {
-        this.expression = expression;
+        this.expressions = expression;
     }
 
     public ArrayList<Parameter> getParameters() {

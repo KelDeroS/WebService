@@ -3,6 +3,7 @@ package main.java.com.kelderos.decoder;
 import main.java.com.kelderos.ArithmeticExpression;
 import main.java.com.kelderos.Parameter;
 
+import java.beans.Expression;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -18,9 +19,9 @@ public class XMLDecoder {
     public ArithmeticExpression readFile(File file) throws FileNotFoundException
     {
         ArithmeticExpression arithmeticExpression = new ArithmeticExpression();
+        ArrayList<String> expressions = new ArrayList<>();
         ArrayList<Parameter> parameters = new ArrayList<>();
         Scanner scanner = new Scanner(file);
-        //scanner.useDelimiter("[<>\n]")
 
         while (scanner.hasNextLine()) {
             str += scanner.nextLine();
@@ -51,16 +52,25 @@ public class XMLDecoder {
             i++;
             stack.push(firstWord);
 
-            if (firstWord.equals("expression") || firstWord.equals("Expression")) {
-                String expression = "";
-                while (str.charAt(i) != '<') {
-                    if (str.charAt(i) != ' ')
-                    {
-                        expression += str.charAt(i);
+            if (firstWord.equals("expressions") || firstWord.equals("Expressions")) {
+                while (true) {
+                    expressions.add(getExpression());
+                    while (str.charAt(i) != '<') {
+                        i++;
                     }
+                    if (str.charAt(i + 1) == '/') {
+                        break;
+                    }
+                }
+                i = i + 2;
+                while (str.charAt(i) != '>') {
+                    lastWord += str.charAt(i);
                     i++;
                 }
-                arithmeticExpression.setExpression(expression);
+                if (!lastWord.equals(stack.pop())) {
+                    System.out.println("Invalid stack");
+                }
+                arithmeticExpression.setExpressions(expressions);
             } else if (firstWord.equals("parameters") || firstWord.equals("Parameters")) {
                 while (true) {
                     parameters.add(getParameter());
@@ -85,6 +95,47 @@ public class XMLDecoder {
         return arithmeticExpression;
     }
 
+    public String getExpression() {
+        String expression = "", firstWord = "";
+
+        while (str.charAt(i) != '<') {
+            i++;
+        }
+        i++;
+
+        while (str.charAt(i) != '>') {
+            firstWord += str.charAt(i);
+            i++;
+        }
+        i++;
+        stack.push(firstWord);
+
+        while (str.charAt(i) != '<') {
+            if (str.charAt(i) != ' ') {
+                expression += str.charAt(i);
+            }
+            i++;
+        }
+        i++;
+
+        if (str.charAt(i) == '/') {
+            i++;
+            firstWord = "";
+
+            while (str.charAt(i) != '>') {
+                firstWord += str.charAt(i);
+                i++;
+            }
+            if (!firstWord.equals(stack.pop())) {
+                System.out.println("Invalid stack");;
+            }
+        } else {
+            System.out.println("invalid format\n");
+        }
+        i++;
+
+        return expression;
+    }
     public Parameter getParameter() {
         Parameter parameter = new Parameter();
         String parameterName = "";
