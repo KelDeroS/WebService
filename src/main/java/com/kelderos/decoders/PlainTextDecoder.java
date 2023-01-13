@@ -8,7 +8,8 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class PlainTextDecoder {
+public class PlainTextDecoder implements Decoder{
+    @Override
     public ArithmeticExpression readFile(File file) throws FileNotFoundException {
         ArithmeticExpression arithmeticExpression = new ArithmeticExpression();
         ArrayList<String> expressions = new ArrayList<>();

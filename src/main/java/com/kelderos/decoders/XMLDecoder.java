@@ -9,11 +9,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Stack;
 
-public class XMLDecoder {
+public class XMLDecoder implements Decoder{
     int i = 0;
     String str = "";
     Stack<String> stack = new Stack<>();
 
+    @Override
     public ArithmeticExpression readFile(File file) throws FileNotFoundException
     {
         ArithmeticExpression arithmeticExpression = new ArithmeticExpression();

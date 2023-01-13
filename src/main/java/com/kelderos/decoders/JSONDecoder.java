@@ -8,10 +8,10 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class JSONDecoder {
+public class JSONDecoder implements Decoder{
     int i = 0;
     String str = "";
-
+    @Override
     public ArithmeticExpression readFile(File file) throws FileNotFoundException
     {
         ArithmeticExpression arithmeticExpression = new ArithmeticExpression();

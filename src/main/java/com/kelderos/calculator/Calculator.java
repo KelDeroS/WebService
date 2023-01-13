@@ -180,7 +180,6 @@ public class Calculator {
             while (!s.isEmpty()) {
                 outputString += s.pop();
             }
-            System.out.println("RPN: " + outputString);
 
             /////////////////////////////////////////// Dore+mifa*0sol-/-lyasi*+5*
 
@@ -214,7 +213,7 @@ public class Calculator {
                         continue;
                     }
                     if (((outputString.charAt(i) == '+') || (outputString.charAt(i) == '-') || (outputString.charAt(i) == '*') || (outputString.charAt(i) == '/')) && (variable.length() != 1)) {
-                        System.out.println("Во входной строке обнаружена неизвестная переменная: " + variable);
+                        System.out.println("ERROR: " + variable);
                     }
                     if ((variable.equals("+")) || (variable.equals("-")) || (variable.equals("*")) || (variable.equals("/"))) {
                         operand2 = CalcStack.pop();
