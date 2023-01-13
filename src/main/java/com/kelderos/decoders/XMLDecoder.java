@@ -1,9 +1,8 @@
-package main.java.com.kelderos.decoder;
+package main.java.com.kelderos.decoders;
 
 import main.java.com.kelderos.ArithmeticExpression;
 import main.java.com.kelderos.Parameter;
 
-import java.beans.Expression;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -14,7 +13,6 @@ public class XMLDecoder {
     int i = 0;
     String str = "";
     Stack<String> stack = new Stack<>();
-
 
     public ArithmeticExpression readFile(File file) throws FileNotFoundException
     {

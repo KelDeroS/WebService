@@ -1,17 +1,21 @@
 package main.java;
 
 import main.java.com.kelderos.ArithmeticExpression;
-import main.java.com.kelderos.Parameter;
-import main.java.com.kelderos.decoder.JSONDecoder;
-import main.java.com.kelderos.decoder.PlainTextDecoder;
-import main.java.com.kelderos.decoder.XMLDecoder;
+import main.java.com.kelderos.calculator.Calculator;
+import main.java.com.kelderos.decoders.JSONDecoder;
+import main.java.com.kelderos.decoders.PlainTextDecoder;
+import main.java.com.kelderos.decoders.XMLDecoder;
+import main.java.com.kelderos.encoders.JSONEncoder;
+import main.java.com.kelderos.encoders.PlainTextEncoder;
+import main.java.com.kelderos.encoders.XMLEncoder;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Arrays;
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         File file1 = new File("input.xml");
         File file2 = new File("input.json");
         File file3 = new File("input.txt");
@@ -63,5 +67,21 @@ public class Main {
             System.out.println("Name: " +  arithmeticExpression.getParameters().get(i).name);
             System.out.println("Value: " + arithmeticExpression.getParameters().get(i).value);
         }
+        System.out.println();
+
+        Calculator calculator = new Calculator();
+        ArrayList<String> results = calculator.calculate(arithmeticExpression);
+        for (int i = 0; i < results.size(); i++) {
+            System.out.println(results.get(i));
+        }
+
+        XMLEncoder xmlEncoder = new XMLEncoder();
+        xmlEncoder.writeToFile(results);
+
+        JSONEncoder jsonEncoder = new JSONEncoder();
+        jsonEncoder.writeToFile(results);
+
+        PlainTextEncoder plainTextEncoder = new PlainTextEncoder();
+        plainTextEncoder.writeToFile(results);
     }
 }

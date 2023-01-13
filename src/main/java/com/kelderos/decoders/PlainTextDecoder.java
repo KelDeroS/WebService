@@ -1,4 +1,4 @@
-package main.java.com.kelderos.decoder;
+package main.java.com.kelderos.decoders;
 
 import main.java.com.kelderos.ArithmeticExpression;
 import main.java.com.kelderos.Parameter;
