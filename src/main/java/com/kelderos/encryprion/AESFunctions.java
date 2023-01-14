@@ -1,4 +1,4 @@
-package main.java.com.kelderos.encryprion;
+package com.kelderos.encryprion;
 
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;

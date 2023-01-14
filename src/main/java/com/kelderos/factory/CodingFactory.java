@@ -1,6 +1,6 @@
-package main.java.com.kelderos.factory;
+package com.kelderos.factory;
 
-import main.java.com.kelderos.ArithmeticExpression;
+import com.kelderos.ArithmeticExpression;
 
 import java.io.File;
 import java.io.FileNotFoundException;

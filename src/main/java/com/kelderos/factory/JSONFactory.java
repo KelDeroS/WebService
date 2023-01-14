@@ -1,12 +1,10 @@
-package main.java.com.kelderos.factory;
+package com.kelderos.factory;
 
-import main.java.com.kelderos.ArithmeticExpression;
-import main.java.com.kelderos.decoders.Decoder;
-import main.java.com.kelderos.decoders.JSONDecoder;
-import main.java.com.kelderos.decoders.XMLDecoder;
-import main.java.com.kelderos.encoders.Encoder;
-import main.java.com.kelderos.encoders.JSONEncoder;
-import main.java.com.kelderos.encoders.XMLEncoder;
+import com.kelderos.ArithmeticExpression;
+import com.kelderos.decoders.Decoder;
+import com.kelderos.decoders.JSONDecoder;
+import com.kelderos.encoders.Encoder;
+import com.kelderos.encoders.JSONEncoder;
 
 import java.io.File;
 import java.io.FileNotFoundException;

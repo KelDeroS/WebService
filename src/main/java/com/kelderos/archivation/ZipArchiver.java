@@ -1,4 +1,4 @@
-package main.java.com.kelderos.archivation;
+package com.kelderos.archivation;
 
 import java.io.File;
 import java.io.FileOutputStream;

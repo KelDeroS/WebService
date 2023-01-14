@@ -1,26 +1,24 @@
-package test.java;
-
-import main.java.com.kelderos.Parameter;
-import main.java.com.kelderos.factory.CodingFactory;
-import main.java.com.kelderos.factory.JSONFactory;
-import main.java.com.kelderos.factory.PlainTextFactory;
-import main.java.com.kelderos.factory.XMLFactory;
+import com.kelderos.Parameter;
+import com.kelderos.factory.CodingFactory;
+import com.kelderos.factory.JSONFactory;
+import com.kelderos.factory.PlainTextFactory;
+import com.kelderos.factory.XMLFactory;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
-import main.java.com.kelderos.ArithmeticExpression;
-import main.java.com.kelderos.archivation.ZipArchiver;
-import main.java.com.kelderos.calculator.Calculator;
-import main.java.com.kelderos.decoders.Decoder;
-import main.java.com.kelderos.decoders.JSONDecoder;
-import main.java.com.kelderos.decoders.PlainTextDecoder;
-import main.java.com.kelderos.decoders.XMLDecoder;
-import main.java.com.kelderos.encoders.JSONEncoder;
-import main.java.com.kelderos.encoders.PlainTextEncoder;
-import main.java.com.kelderos.encoders.XMLEncoder;
-import main.java.com.kelderos.encryprion.AESDecryptor;
-import main.java.com.kelderos.encryprion.AESEncryptor;
-import main.java.com.kelderos.encryprion.AESFunctions;
+import com.kelderos.ArithmeticExpression;
+import com.kelderos.archivation.ZipArchiver;
+import com.kelderos.calculator.Calculator;
+import com.kelderos.decoders.Decoder;
+import com.kelderos.decoders.JSONDecoder;
+import com.kelderos.decoders.PlainTextDecoder;
+import com.kelderos.decoders.XMLDecoder;
+import com.kelderos.encoders.JSONEncoder;
+import com.kelderos.encoders.PlainTextEncoder;
+import com.kelderos.encoders.XMLEncoder;
+import com.kelderos.encryprion.AESDecryptor;
+import com.kelderos.encryprion.AESEncryptor;
+import com.kelderos.encryprion.AESFunctions;
 
 import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;

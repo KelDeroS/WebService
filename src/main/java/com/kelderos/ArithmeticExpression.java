@@ -1,4 +1,4 @@
-package main.java.com.kelderos;
+package com.kelderos;
 
 import java.util.ArrayList;
 

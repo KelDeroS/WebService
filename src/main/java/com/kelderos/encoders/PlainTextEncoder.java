@@ -1,4 +1,4 @@
-package main.java.com.kelderos.encoders;
+package com.kelderos.encoders;
 
 import java.io.File;
 import java.io.FileOutputStream;

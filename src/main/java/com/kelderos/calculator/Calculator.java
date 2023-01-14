@@ -1,7 +1,7 @@
-package main.java.com.kelderos.calculator;
+package com.kelderos.calculator;
 
-import main.java.com.kelderos.ArithmeticExpression;
-import main.java.com.kelderos.Parameter;
+import com.kelderos.ArithmeticExpression;
+import com.kelderos.Parameter;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

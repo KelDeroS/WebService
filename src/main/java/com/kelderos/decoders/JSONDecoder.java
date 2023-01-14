@@ -1,7 +1,7 @@
-package main.java.com.kelderos.decoders;
+package com.kelderos.decoders;
 
-import main.java.com.kelderos.ArithmeticExpression;
-import main.java.com.kelderos.Parameter;
+import com.kelderos.ArithmeticExpression;
+import com.kelderos.Parameter;
 
 import java.io.File;
 import java.io.FileNotFoundException;

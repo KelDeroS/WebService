@@ -1,4 +1,4 @@
-package main.java.com.kelderos;
+package com.kelderos;
 
 public class Parameter
 {
