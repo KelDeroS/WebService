@@ -1,8 +1,12 @@
 package com.kelderos.archivation;
 
+import com.kelderos.webservice.FileType;
+
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 
 import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
 public class ZipArchiver {
@@ -16,6 +20,21 @@ public class ZipArchiver {
             zout.closeEntry();
             zout.close();
             return byteArrayOutputStream.toByteArray();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public FileType unzip(byte[] data) {
+        try {
+            ZipInputStream zipInputStream = new ZipInputStream(new ByteArrayInputStream(data));
+            ZipEntry zipEntry;
+
+            if ((zipEntry = zipInputStream.getNextEntry()) != null) {
+
+                return new FileType(zipEntry.getName(), zipInputStream.readAllBytes());
+            } else
+                throw new IllegalArgumentException("Zip contains no files");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

@@ -3,7 +3,9 @@ import com.kelderos.factory.CodingFactory;
 import com.kelderos.factory.JSONFactory;
 import com.kelderos.factory.PlainTextFactory;
 import com.kelderos.factory.XMLFactory;
+import com.kelderos.webservice.FileType;
 import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import com.kelderos.ArithmeticExpression;
@@ -28,6 +30,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class UnitTesting {
     @Test
@@ -134,15 +139,16 @@ public class UnitTesting {
         Assert.assertEquals("| 19.0 |", scanner3.nextLine());
         Assert.assertEquals("| 10.0 |", scanner3.nextLine());
 
-/*
-        ZipArchiver zipArchiver = new ZipArchiver();
-        zipArchiver.archive(new File("results.xml"), new File("results.zip"));
+    }
 
-        SecretKey key = AESFunctions.generateKey();
-        String algorithm = "AES/CBC/PKCS5Padding";
-        IvParameterSpec ivParameterSpec = AESFunctions.generateIv();
-        AESEncryptor.encryptFile(algorithm, key, ivParameterSpec, new File("results.xml"), new File("encryptedResults.txt"));
-        AESDecryptor.decryptFile(algorithm, key, ivParameterSpec, new File("encryptedResults.txt"), new File("decryptedResults.txt"));
-*/
+    @Test
+    public void archivationTesting() throws IOException {
+        ZipArchiver zipArchiver = new ZipArchiver();
+        byte[] data = "test".getBytes();
+        byte[] zipped = zipArchiver.zip("test.txt", data);
+        FileType fileType = zipArchiver.unzip(zipped);
+
+        assertArrayEquals(data, fileType.getData());
+        assertEquals("test.txt", fileType.getFilename());
     }
 }
