@@ -1,33 +1,23 @@
 package com.kelderos.archivation;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.Scanner;
+import java.io.ByteArrayOutputStream;
+
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 public class ZipArchiver {
-    public File archive(File inputFile, File outputFile) throws IOException {
-
-        StringBuilder sb = new StringBuilder();
-        Scanner scanner = new Scanner(inputFile);
-
-        while (scanner.hasNextLine())
-        {
-            sb.append(scanner.nextLine());
-            sb.append("\n");
+    public byte[] zip(String filename, byte[] data) {
+        try {
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            ZipOutputStream zout = new ZipOutputStream(byteArrayOutputStream);
+            ZipEntry zipEntry = new ZipEntry(filename);
+            zout.putNextEntry(zipEntry);
+            zout.write(data);
+            zout.closeEntry();
+            zout.close();
+            return byteArrayOutputStream.toByteArray();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
-
-        ZipOutputStream out = new ZipOutputStream(new FileOutputStream(outputFile));
-        ZipEntry entry = new ZipEntry(inputFile.getName());
-
-        out.putNextEntry(entry);
-        byte[] data = sb.toString().getBytes();
-        out.write(data);
-        out.closeEntry();
-        out.close();
-
-        return outputFile;
     }
 }

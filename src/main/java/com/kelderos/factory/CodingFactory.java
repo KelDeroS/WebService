@@ -8,6 +8,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public interface CodingFactory {
-    ArithmeticExpression decode(File file) throws FileNotFoundException;
-    File encode(ArrayList<String> results, String filename) throws IOException;
+    ArithmeticExpression decode(byte[] file) throws FileNotFoundException;
+    byte[] encode(ArrayList<String> results, String filename) throws IOException;
 }

@@ -25,12 +25,13 @@ import javax.crypto.spec.IvParameterSpec;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UnitTesting {
     @Test
-    public void decodersTesting() throws FileNotFoundException {
+    public void decodersTesting() throws IOException {
         File file1 = new File("input.xml");
         File file2 = new File("input.json");
         File file3 = new File("input.txt");
@@ -40,7 +41,7 @@ public class UnitTesting {
         CodingFactory jsonProcessor = new JSONFactory();
         CodingFactory plainTextProcessor = new PlainTextFactory();
 
-        arithmeticExpression = xmlProcessor.decode(file1);
+        arithmeticExpression = xmlProcessor.decode(Files.readAllBytes(file1.toPath()));
 
         Assert.assertEquals("a+b+10", arithmeticExpression.getExpressions().get(0));
         Assert.assertEquals("a+7", arithmeticExpression.getExpressions().get(1));
@@ -52,7 +53,7 @@ public class UnitTesting {
         Assert.assertEquals(6, arithmeticExpression.getParameters().get(1).value);
 
 
-        arithmeticExpression = jsonProcessor.decode(file2);
+        arithmeticExpression = jsonProcessor.decode(Files.readAllBytes(file2.toPath()));
 
         Assert.assertEquals("a+b+10", arithmeticExpression.getExpressions().get(0));
         Assert.assertEquals("a+7", arithmeticExpression.getExpressions().get(1));
@@ -64,7 +65,7 @@ public class UnitTesting {
         Assert.assertEquals(6, arithmeticExpression.getParameters().get(1).value);
 
 
-        arithmeticExpression = plainTextProcessor.decode(file3);
+        arithmeticExpression = plainTextProcessor.decode(Files.readAllBytes(file3.toPath()));
 
         Assert.assertEquals("a+b+10", arithmeticExpression.getExpressions().get(0));
         Assert.assertEquals("a+7", arithmeticExpression.getExpressions().get(1));
@@ -112,7 +113,7 @@ public class UnitTesting {
         CodingFactory jsonProcessor = new JSONFactory();
         CodingFactory plainTextProcessor = new PlainTextFactory();
 
-        Scanner scanner1 = new Scanner(xmlProcessor.encode(results, file1));
+        Scanner scanner1 = new Scanner(new String(xmlProcessor.encode(results, file1)));
         Assert.assertEquals("<results>", scanner1.nextLine());
         Assert.assertEquals("\t<result>19.0</result>", scanner1.nextLine());
         Assert.assertEquals("\t<result>10.0</result>", scanner1.nextLine());
@@ -120,7 +121,7 @@ public class UnitTesting {
         scanner1.close();
 
 
-        Scanner scanner2 = new Scanner(jsonProcessor.encode(results, file2));
+        Scanner scanner2 = new Scanner(new String(jsonProcessor.encode(results, file2)));
         Assert.assertEquals("{", scanner2.nextLine());
         Assert.assertEquals("\t\"results\": [", scanner2.nextLine());
         Assert.assertEquals("\t\t19.0,", scanner2.nextLine());
@@ -129,7 +130,7 @@ public class UnitTesting {
         Assert.assertEquals("}", scanner2.nextLine());
         scanner2.close();
 
-        Scanner scanner3 = new Scanner(plainTextProcessor.encode(results, file3));
+        Scanner scanner3 = new Scanner(new String(plainTextProcessor.encode(results, file3)));
         Assert.assertEquals("| 19.0 |", scanner3.nextLine());
         Assert.assertEquals("| 10.0 |", scanner3.nextLine());
 

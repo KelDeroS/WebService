@@ -15,13 +15,13 @@ import java.util.ArrayList;
 
 public class PlainTextFactory implements CodingFactory{
     @Override
-    public ArithmeticExpression decode(File file) throws FileNotFoundException {
+    public ArithmeticExpression decode(byte[] file) throws FileNotFoundException {
         Decoder decoder = new PlainTextDecoder();
         return decoder.readFile(file);
     }
 
     @Override
-    public File encode(ArrayList<String> results, String filename) throws IOException {
+    public byte[] encode(ArrayList<String> results, String filename) throws IOException {
         Encoder encoder = new PlainTextEncoder();
         return encoder.writeToFile(results, filename);
     }

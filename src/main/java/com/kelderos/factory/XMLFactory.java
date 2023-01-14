@@ -13,13 +13,13 @@ import java.util.ArrayList;
 
 public class XMLFactory implements CodingFactory {
     @Override
-    public ArithmeticExpression decode(File file) throws FileNotFoundException {
+    public ArithmeticExpression decode(byte[] file) throws FileNotFoundException {
         Decoder decoder = new XMLDecoder();
         return decoder.readFile(file);
     }
 
     @Override
-    public File encode(ArrayList<String> results, String filename) throws IOException {
+    public byte[] encode(ArrayList<String> results, String filename) throws IOException {
         Encoder encoder = new XMLEncoder();
         return encoder.writeToFile(results, filename);
     }

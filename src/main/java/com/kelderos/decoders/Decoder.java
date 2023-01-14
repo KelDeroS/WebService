@@ -6,5 +6,5 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 public interface Decoder {
-    ArithmeticExpression readFile(File file) throws FileNotFoundException;
+    ArithmeticExpression readFile(byte[] file) throws FileNotFoundException;
 }

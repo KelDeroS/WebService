@@ -15,12 +15,12 @@ public class XMLDecoder implements Decoder{
     Stack<String> stack = new Stack<>();
 
     @Override
-    public ArithmeticExpression readFile(File file) throws FileNotFoundException
+    public ArithmeticExpression readFile(byte[] file) throws FileNotFoundException
     {
         ArithmeticExpression arithmeticExpression = new ArithmeticExpression();
         ArrayList<String> expressions = new ArrayList<>();
         ArrayList<Parameter> parameters = new ArrayList<>();
-        Scanner scanner = new Scanner(file);
+        Scanner scanner = new Scanner(new String(file));
 
         while (scanner.hasNextLine()) {
             str += scanner.nextLine();
